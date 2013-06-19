@@ -1,49 +1,66 @@
-<html>
-  <head>
-    <title></title>
-    <meta content="">
-    <style></style>
-    <script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript">
-	function syllabify(form)
-	{
-        $("#progress").html("Syllabifying Please Wait....")
-		var text= form.word.value;
-		var jsonRequest = {
-        "method" :  "modules.Syllabalizer.syllabify",
-         "params" : [text], 
-         "id" : ""
-         };
+{% extends "silpa.html" %}
+{% block modulescript %}
+<script>
+$(document).ready(function() {
+    $("form").submit(function(event)
+    {
+        event.preventDefault();
+        var text= $("textarea[name=input_text]", 'form').val();
+
+            var jsonRequest = {
+        "method" :  "syllabalizer.syllabify",
+            "params" : [text],
+            "id" : ""
+            };
+        id_result = $('#result');
+        id_error = $('#errormessage');
+        id_progress = $('#progress');
         $.ajax({
             type: "POST",
             contentType: "application/json; charset=utf-8",
             url: "JSONRPC",
-            data: $.toJSON(jsonRequest), 
+            data: JSON.stringify(jsonRequest),
             dataType: "json",
-            success: function(msg) {
-                $('#progress').html("");
-                // Render it
-                $('#result') .html("<p>"+ msg.result+ "</p>");
+            beforeSend:function(){
+                id_result.hide();
+                id_error.hide();
+                id_progress.html("Syllabifying. Please Wait...").show();
             },
-            error: function(msg) { alert(msg.message); }
+            success: function(msg) {
+                id_progress.hide();
+                var result = msg.result.replace("\n", "&#13;")
+                id_result.html(result).show();
+            },
+            error: function(msg) {
+                id_progress.hide();
+                id_error.html("Something went wrong. Please try again!").show();
+            }
         });
-		return false;
-	}
-	</script>
-  </head>
-  <body>
-	<h2>Syllabification</h2></hr>
-		<p>A <a href=""http://en.wikipedia.org/wiki/Syllable>syllable</a> is a unit of organization for a sequence of speech sounds.Enter the text for syllabification.		 Language of each  word will be detected. 
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="well">
+  <h2>Syllabizer - A tool for splitting words to syllables</h2></hr>
+		<p>A <a href=""http://en.wikipedia.org/wiki/Syllable>syllable</a> is a unit of organization for a sequence of speech sounds.Enter the text for syllabification.		 Language of each  word will be detected.
 		</p>
-		<form action="" method="post" onsubmit="return syllabify(this);">
-		<input  type="text" id='word' name='word'  style="width:20em;" />
-		<input  type="submit" id="Syllabify" value="Syllabify"  name="action" style="width:10em;"/>
-		</br>
-		</form> 
-	 </body>
-        <hr/>
-        <div id="progress"></div>
-        <div id="successmessage"></div>
-        <div id="errormessage"></div>
-        <div id="result"></div>
-</html>
+  <p class="help-block">Enter the text for syllabalizing  in the below text area.
+  </p>
+  <form class="form-horizontal" action="" method="post">
+    <textarea  name='input_text' id='id1' rows="10" style="width: 98.5%;"></textarea>
+    <span class="help-block"></span>
+    <div class="control-group">
+      <div class="controls">
+        <button class="btn" type="submit" id="Convert">Convert</button>
+      </div>
+    </div>
+  </form>
+  <hr/>
+  <div id="progress" class="alert alert-info hide"></div>
+  <div id="successmessage" class="alert alert-success hide"></div>
+  <div id="errormessage" class="alert alert-error hide"></div>
+  <div id="result"></div>
+</div>
+{% endblock %}
