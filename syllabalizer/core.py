@@ -212,7 +212,7 @@ class Syllabalizer:
                         (text[start+1:end] in consonant_list or
                             text[start+1:end] in consonant_blends) and
                         text[end] in vowel_list and
-                        text[end:end+2] <> "e "
+                        text[end:end+2] != "e "
                 ):
                     text = text[:start+1] + "/" + text[start+1:]
             start = start + 1
