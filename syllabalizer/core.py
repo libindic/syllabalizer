@@ -29,12 +29,11 @@ from langdetect import detect_lang
 class Syllabalizer:
 
     def syllabify_ml(self, text):
-        signs = [
-                  u'\u0d02', u'\u0d03', u'\u0d3e', u'\u0d3f', u'\u0d40',
-                  u'\u0d41', u'\u0d42', u'\u0d43', u'\u0d44', u'\u0d46',
-                  u'\u0d47', u'\u0d48', u'\u0d4a', u'\u0d4b', u'\u0d4c',
-                  u'\u0d4d', u'\u0d57'
-        ]
+        signs = [u'\u0d02', u'\u0d03', u'\u0d3e', u'\u0d3f', u'\u0d40',
+                 u'\u0d41', u'\u0d42', u'\u0d43', u'\u0d44', u'\u0d46',
+                 u'\u0d47', u'\u0d48', u'\u0d4a', u'\u0d4b', u'\u0d4c',
+                 u'\u0d4d', u'\u0d57'
+                 ]
         limiters = ['.', '\"', '\'', '`', '!', ';', ',', '?']
         chandrakkala = u'\u0d4d'
         lst_chars = []
@@ -55,10 +54,11 @@ class Syllabalizer:
         return lst_chars
 
     def syllabify_kn(self, text):
-        signs = [
-        u'\u0c82', u'\u0c83', u'\u0cbd', u'\u0cbe', u'\u0cbf', u'\u0cc0', u'\u0cc1',
-        u'\u0cc2', u'\u0cc3', u'\u0cc4', u'\u0cc6', u'\u0cc7', u'\u0cc8',
-        u'\u0cca', u'\u0ccb', u'\u0ccc', u'\u0ccd']
+        signs = [u'\u0c82', u'\u0c83', u'\u0cbd', u'\u0cbe', u'\u0cbf',
+                 u'\u0cc0', u'\u0cc1', u'\u0cc2', u'\u0cc3', u'\u0cc4',
+                 u'\u0cc6', u'\u0cc7', u'\u0cc8', u'\u0cca', u'\u0ccb',
+                 u'\u0ccc', u'\u0ccd'
+                 ]
         limiters = ['.', '\"', '\'', '`', '!', ';', ', ', '?']
 
         halant = u'\u0ccd'
@@ -80,11 +80,11 @@ class Syllabalizer:
         return lst_chars
 
     def syllabify_bn(self, text):
-        signs = [
-        u'\u0981', u'\u0982', u'\u0983', u'\u09bd', u'\u09be', u'\u09bf',
-        u'\u09c0', u'\u09c1',
-        u'\u09c2', u'\u09c3', u'\u09c4', u'\u09c6', u'\u09c7', u'\u09c8',
-        u'\u09ca', u'\u09cb', u'\u09cc', u'\u09cd', u'\u09d7']
+        signs = [u'\u0981', u'\u0982', u'\u0983', u'\u09bd', u'\u09be',
+                 u'\u09bf', u'\u09c0', u'\u09c1', u'\u09c2', u'\u09c3',
+                 u'\u09c4', u'\u09c6', u'\u09c7', u'\u09c8', u'\u09ca',
+                 u'\u09cb', u'\u09cc', u'\u09cd', u'\u09d7'
+                 ]
         limiters = ['.', '\"', '\'', '`', '!', ';', ', ', '?']
 
         halant = u'\u09cd'
@@ -106,10 +106,10 @@ class Syllabalizer:
         return lst_chars
 
     def syllabify_hi(self, text):
-        signs = [
-        u'\u0902', u'\u0903', u'\u093e', u'\u093f', u'\u0940', u'\u0941',
-        u'\u0942', u'\u0943', u'\u0944', u'\u0946', u'\u0947', u'\u0948',
-        u'\u094a', u'\u094b', u'\u094c', u'\u094d']
+        signs = [u'\u0902', u'\u0903', u'\u093e', u'\u093f', u'\u0940',
+                 u'\u0941', u'\u0942', u'\u0943', u'\u0944', u'\u0946',
+                 u'\u0947', u'\u0948', u'\u094a', u'\u094b', u'\u094c',
+                 u'\u094d']
         limiters = ['.', '\"', '\'', '`', '!', ';', ', ', '?']
 
         virama = u'\u094d'
@@ -131,11 +131,10 @@ class Syllabalizer:
         return lst_chars
 
     def syllabify_ta(self, text):
-        signs = [
-        u'\u0b81', u'\u0b82', u'\u0b83', u'\u0bbd',
-        u'\u0bbe', u'\u0bbf', u'\u0bc0', u'\u0bc1',
-        u'\u0bc2', u'\u0bc3', u'\u0bc4', u'\u0bc6', u'\u0bc7', u'\u0bc8',
-        u'\u0bca', u'\u0bcb', u'\u0bcc', u'\u0bcd', u'\u0bd7']
+        signs = [u'\u0b81', u'\u0b82', u'\u0b83', u'\u0bbd', u'\u0bbe',
+                 u'\u0bbf', u'\u0bc0', u'\u0bc1', u'\u0bc2', u'\u0bc3',
+                 u'\u0bc4', u'\u0bc6', u'\u0bc7', u'\u0bc8', u'\u0bca',
+                 u'\u0bcb', u'\u0bcc', u'\u0bcd', u'\u0bd7']
         limiters = ['.', '\"', '\'', '`', '!', ';', ', ', '?']
 
         virama = u'\u0bcd'
@@ -155,7 +154,8 @@ class Syllabalizer:
                     lst_chars.append(char)
 
         return lst_chars
-    #Source: http://www.python-forum.org/pythonforum/viewtopic.php?f=14&t=5810#p42091
+    #Source: http://www.python-forum.org/pythonforum/viewtopic.php?
+    #f=14&t=5810#p42091
     #Author: Cabu
 
     def syllabify_en(self, text):
@@ -217,7 +217,8 @@ class Syllabalizer:
                     text = text[:start+1] + "/" + text[start+1:]
             start = start + 1
 
-        # Cut vowel consonant / consonant+ vowel (trumpet, simple, understanding, ...)
+        # Cut vowel consonant / consonant+ vowel (trumpet,
+        #simple, understanding, ...)
         start = 0
         end = 0
         while start < len(text)-1:
@@ -225,7 +226,8 @@ class Syllabalizer:
                 end = start + 2
                 while end <= len(text)-1 and text[end] in consonant_list:
                     end = end + 1
-                if end <= len(text)-1 and end > start+2 and text[end] in vowel_list:
+                if (end <= len(text)-1 and end > start+2 and
+                        text[end] in vowel_list):
                     if not (text[start+1:end] in consonant_blends):
                         text = text[:start+2] + "-" + text[start+2:]
             start = start + 1
