@@ -28,15 +28,11 @@
                 },
                 success: function(msg) {
                     id_progress.hide();
-                    var result = msg.result
-                    if (typeof result === 'string'){
-                        id_result.html(result).show();
-                    }
-                    else{
-                        result.map(function(r){return r+" / "})
-                        id_result.html(result).show();
-                    }
+                    var result = msg.result;
+                    console.log(result);
+                    id_result.html("<p>"+result+"</p>").show();
                 },
+
                 error: function(msg) {
                     id_progress.hide();
                     id_error.html("Something went wrong. Please try again!").show();
