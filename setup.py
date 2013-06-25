@@ -17,6 +17,6 @@ setup(
     package_data = {'.':[]},
     include_package_data = True,
     setup_requires = ['setuptools-git'],
-    install_requires = ['setuptools'],
+    install_requires = ['setuptools','silpa_common'],
     zip_safe = False,
     )
