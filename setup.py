@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-name = "syllabalizer"
+name = "indicsyllabifier"
 
 setup(
     name = name,
