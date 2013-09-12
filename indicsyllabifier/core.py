@@ -1,33 +1,28 @@
 #!/usr/bin/env python
-"""mlsplit - Split Malayalam words into letters
+# mlsplit - Split Malayalam words into letters
+# This script splits Malayalam words into letters.
+# Ref: http://tinyurl.com/3v729s
+# Copyright (C) 2008 Baiju M <baiju.m.mail AT gmail.com>
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at
+# your option) any later version.
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-This script splits Malayalam words into letters.
-Ref: http://tinyurl.com/3v729s
-
-
-
-Copyright (C) 2008 Baiju M <baiju.m.mail AT gmail.com>
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or (at
-your option) any later version.
-
-This program is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-"""
 
 import re
 from silpa_common.langdetect import detect_lang
 
 
 class Syllabalizer:
-
+    """
+    Syllabalizer class provides methods to syllabify unicode strings
+    """
     def syllabify_ml(self, text):
         signs = [u'\u0d02', u'\u0d03', u'\u0d3e', u'\u0d3f', u'\u0d40',
                  u'\u0d41', u'\u0d42', u'\u0d43', u'\u0d44', u'\u0d46',
@@ -236,12 +231,25 @@ class Syllabalizer:
         return text
 
     def get_module_name(self):
+        """
+        return module name
+        """
         return "Syllabification"
 
     def get_info(self):
+        """
+        return module info
+        """
         return "Syllabify each word in the given text"
 
     def syllabify(self, text):
+        """
+        syllabifies the given text
+
+        :param text: the input  text.
+        :type text: str.
+        :returns: text with syllables marked.
+        """
         if text.strip() == "":
             return []
         lang = detect_lang(text.split(" ")[0])[text.split(" ")[0]]
