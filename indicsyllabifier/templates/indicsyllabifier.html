@@ -5,39 +5,42 @@
         $("form").submit(function(event)
         {
             event.preventDefault();
-            var text= $("textarea[name=input_text]", 'form').val();
-
-            var jsonRequest = {
-                "method" :  "indicsyllabifier.syllabify",
-                "params" : [text],
-                "id" : ""
-            };
-            id_result = $('#result');
-            id_error = $('#errormessage');
-            id_progress = $('#progress');
-            $.ajax({
-                type: "POST",
-                contentType: "application/json; charset=utf-8",
-                url: "JSONRPC",
-                data: JSON.stringify(jsonRequest),
-                dataType: "json",
-                beforeSend:function(){
-                    id_result.hide();
-                    id_error.hide();
-                    id_progress.html("Syllabifying. Please Wait...").show();
+            var text= $("textarea[name=input_text]", 'form').val(),
+                jsonRequest = {
+                    "method" :  "syllabalizer.syllabify",
+                    "params" : [text],
+                    "id" : ""
                 },
-                success: function(msg) {
-                    id_progress.hide();
-                    var result = msg.result;
-                    console.log(result);
-                    id_result.html("<p>"+result+"</p>").show();
-                },
+                id_result = $('#result'),
+                id_error = $('#errormessage'),
+                id_progress = $('#progress');
 
-                error: function(msg) {
-                    id_progress.hide();
-                    id_error.html("Something went wrong. Please try again!").show();
-                }
-            });
+            if(text !== "") {
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: "JSONRPC",
+                    data: JSON.stringify(jsonRequest),
+                    dataType: "json",
+                    beforeSend:function(){
+                        id_result.hide();
+                        id_error.hide();
+                        id_progress.html("Syllabifying. Please Wait...").show();
+                    },
+                    success: function(msg) {
+                        id_progress.hide();
+                        id_result.html(msg.result).show();
+                    },
+
+                    error: function(msg) {
+                        id_progress.hide();
+                        id_error.html("Something went wrong. Please try again!").show();
+                    }
+                });
+            } else {
+                id_result.hide();
+                id_error.html("Enter text").show();
+            }
         });
     });
 </script>
@@ -64,7 +67,6 @@
     </form>
     <hr/>
     <div id="progress" class="alert alert-info hide"></div>
-    <div id="successmessage" class="alert alert-success hide"></div>
     <div id="errormessage" class="alert alert-error hide"></div>
     <div id="result" class="alert alert-success hide"></div>
 </div>
