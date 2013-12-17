@@ -7,9 +7,9 @@
             event.preventDefault();
             var text= $("textarea[name=input_text]", 'form').val(),
                 jsonRequest = {
-                    "method" :  "syllabalizer.syllabify",
-                    "params" : [text],
-                    "id" : ""
+                    method :  "indicsyllabifier.syllabify",
+                    params : [text],
+                    id : ""
                 },
                 id_result = $('#result'),
                 id_error = $('#errormessage'),
@@ -47,27 +47,24 @@
 {% endblock %}
 
 {% block content %}
-<div class="well">
-    <h2>Syllabalizer - A tool for splitting words to syllables</h2></hr>
-    <p>A <a href=""http://en.wikipedia.org/wiki/Syllable>syllable</a> is
-    a unit of organization for a sequence of speech sounds. Language of
-    each  word will be detected.  
-    Works on Malayalam, Kannada, Bengali, Tamil and Hindi
-    </p>
-    <p class="help-block">Enter the text for syllabalizing  in the below text area.
-    </p>
-    <form class="form-horizontal" action="" method="post">
-        <textarea  name='input_text' id='id1' rows="10" style="width: 98.5%;"></textarea>
-        <span class="help-block"></span>
-        <div class="control-group">
-            <div class="controls">
-                <button class="btn" type="submit" id="Convert">Convert</button>
-            </div>
-        </div>
-    </form>
-    <hr/>
-    <div id="progress" class="alert alert-info hide"></div>
-    <div id="errormessage" class="alert alert-error hide"></div>
-    <div id="result" class="alert alert-success hide"></div>
+<div class="page-header">
+    <h1>Syllabalizer</h1>
 </div>
+
+<p>A <a href=""http://en.wikipedia.org/wiki/Syllable>syllable</a> is a unit of organization for a sequence of speech sounds. Language of each  word will be detected. Works on Malayalam, Kannada, Bengali, Tamil and Hindi</p>
+
+<p class="help-block">Enter the text for syllabalizing  in the below text area.</p>
+
+<form action="" method="post">
+    <div class="form-group">
+        <textarea name='input_text' id='id1' rows="10" class="form-control"></textarea>
+            </div>
+    <div class="form-group">
+        <button class="btn btn-default" type="submit" id="Convert">Convert</button>
+    </div>
+</form>
+
+<div id="progress" class="alert alert-info silpa-hide"></div>
+<div id="errormessage" class="alert alert-danger silpa-hide"></div>
+<p id="result"></p>
 {% endblock %}
