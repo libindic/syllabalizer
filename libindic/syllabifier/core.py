@@ -19,9 +19,9 @@ import re
 from silpa_common.langdetect import detect_lang
 
 
-class Syllabalizer:
+class Syllabifier:
     """
-    Syllabalizer class provides methods to syllabify unicode strings
+    Syllabifier class provides methods to syllabify unicode strings
     """
     def syllabify_ml(self, text):
         signs = [u'\u0d02', u'\u0d03', u'\u0d3e', u'\u0d3f', u'\u0d40',
@@ -273,4 +273,4 @@ class Syllabalizer:
 
 
 def getInstance():
-        return Syllabalizer()
+        return Syllabifier()
