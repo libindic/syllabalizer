@@ -13,8 +13,11 @@ class IndicSyllabifierTest(TestCase):
         self.syllabifier = Syllabifier()
 
     def test_syllabify_english(self):
-        self.assertEqual(self.syllabifier.syllabify(u"A syllable is a unit of organization for a sequence of speech sounds."),
-                         u" A syl-lable is a u/nit of or-ga/ni/za/tion for a se/qu_en-ce of speech sounds. ")
+        self.assertEqual(self.syllabifier.syllabify(
+            u"A syllable is a unit of organization for a sequence of " +
+            u"speech sounds."),
+            u" A syl-lable is a u/nit of or-ga/ni/za/tion for a " +
+            u"se/qu_en-ce of speech sounds. ")
 
     def test_syllabify_malayalam(self):
         self.assertEqual(self.syllabifier.syllabify(
