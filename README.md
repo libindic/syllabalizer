@@ -13,7 +13,7 @@ English.
 1. Clone the repository `git clone https://github.com/libindic/syllabalizer.git`
 2. Change to the cloned directory `cd syllabalizer`
 3. Run setup.py to create installable source `python setup.py sdist`
-3. Install using pip `pip install dist/syllabifier*.tar.gz`
+4. Install using pip `pip install dist/libindic-syllabifier*.tar.gz`
 
 ## Usage
 ```
