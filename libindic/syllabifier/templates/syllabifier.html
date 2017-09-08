@@ -30,7 +30,7 @@
                     },
                     success: function(msg) {
                         id_progress.hide();
-                        id_result.html(msg.result).show();
+                        id_result.html(msg.result.join()).show();
                     },
 
                     error: function(msg) {
