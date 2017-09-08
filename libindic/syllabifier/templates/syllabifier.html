@@ -7,9 +7,10 @@
             event.preventDefault();
             var text= $("textarea[name=input_text]", 'form').val(),
                 jsonRequest = {
-                    method :  "indicsyllabifier.syllabify",
+                    method :  "syllabifier.syllabify",
                     params : [text],
-                    id : ""
+                    id : "jsonrpc",
+                    jsonrpc: "2"
                 },
                 id_result = $('#result'),
                 id_error = $('#errormessage'),
@@ -19,7 +20,7 @@
                 $.ajax({
                     type: "POST",
                     contentType: "application/json; charset=utf-8",
-                    url: "JSONRPC",
+                    url: "/api/JSONRPC",
                     data: JSON.stringify(jsonRequest),
                     dataType: "json",
                     beforeSend:function(){
