@@ -16,7 +16,7 @@
 
 
 import re
-from silpa_common.langdetect import detect_lang
+from libindic.utils.langdetect import detect_lang
 
 
 class Syllabifier:
